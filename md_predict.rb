@@ -21,6 +21,7 @@ class Ratings
     avesim = vsim.sum/vsim.length
     averate = vrate.sum/vrate.length
     #WARN! cov and vx would be 0 if there is only one review
+    #WARN! 0 cov (all users give same rating) lead to invariable rating prediction
     cov = vsim.map{|s| s-avesim}*vrate.map{|r| r-averate}
     vx = vrate.map{|r| r-averate}*vrate.map{|r| r-averate}
     beta = cov/vx
