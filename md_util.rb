@@ -9,7 +9,7 @@ end
 class Array
   def *(arr)
     res=0
-    (0..self.length).each{|i| res+=self[i].to_i*arr[i].to_i}
+    (0..self.length).each{|i| res+=self[i].to_f*arr[i].to_f}
     return res
   end
 end

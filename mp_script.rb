@@ -1,4 +1,4 @@
-require "./md_predict.rb"
+require "./mp_predict.rb"
 
 uid, mid = ARGV
 uid=uid.to_i
