@@ -1,3 +1,5 @@
+require "./md_util.rb"
+
 #data row
 class MovieRecord
   attr_reader :u_id, :m_id, :rate, :time
