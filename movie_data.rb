@@ -24,7 +24,7 @@ class MovieData
   def popularity(m_id)
     mv=@mvList[m_id]
     begin
-      return mv.totalR/mv.rn
+      return mv.aveRating;
     rescue
       return nil
     end
@@ -34,7 +34,7 @@ class MovieData
   def popularity_list
     begin
       #hash sort returns array!
-      return @mvList.sort_by{|m_id, mv| mv.totalR/mv.rn}.to_h
+      return @mvList.sort_by{|m_id, mv| mv.aveRating}.to_h
     rescue
       return nil
     end
@@ -77,8 +77,7 @@ class MovieData
       @mvList[m_id] = mv
     end
     mv=@mvList[m_id]
-    mv.rn+=1
-    mv.totalR+=row.rate
+    mv.urList[row.u_id] = row.rate;
   end
 
   #add review info for every user: movies reviewed and corresponding rating

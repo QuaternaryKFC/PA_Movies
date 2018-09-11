@@ -1,6 +1,6 @@
 require "./movie_data.rb"
 
-md = MovieData.new("../ml-100k/u.data")
+md = MovieData.new("./ml-100k/u.data")
 pop = md.popularity_list
 mn = pop.length
 puts "least pop\n"

@@ -20,7 +20,12 @@ class User
 
   #similarity=1-(sum|rating-ur.rating|/num of commonly reviewed movie)/5
   def similar(ur)
-    if @u_id!=ur.u_id
+    if @msim.key?(ur.u_id)
+      return @msim[ur.u_id]
+    end
+    if @u_id==ur.u_id
+      return 1
+    else
       total=0
       ct=0
       @mrList.each do |m_id, rate|
@@ -31,18 +36,20 @@ class User
       end
       return 1-total/ct
     end
-    return 0
   end
 
 end
 
 class Movie
   attr_reader :m_id
-  attr_accessor :rn, :totalR
+  attr_accessor :urList
   def initialize(m_id)
     #movie id; number of reviews; sum of ratings
     @m_id = m_id
-    @rn=0
-    @totalR=0
+    @urList = Hash.new
+  end
+
+  def aveRating
+    return @urList.sum{|uid, r| r}/@urList.length
   end
 end
