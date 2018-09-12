@@ -3,7 +3,7 @@ require "./md_models.rb"
 #you can also use a method_missing method to deal with this kind of exception
 #main class for movie data processing
 class MovieData
-  attr_reader :mvList, :urList
+  attr_reader :mvList, :urList, :rows
   def initialize(file)
     @datafile = File.open(file)
     #map ids to movies and users

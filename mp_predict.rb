@@ -12,6 +12,9 @@ class Ratings
     #return para[:alpha]+1*para[:beta]
     ur = @md.urList[u_id]
     mv = @md.mvList[m_id]
+    if mv==nil
+      return 4
+    end
     if mv.urList.length==1
       uid = mv.urList.keys()[0]
       u = @md.urList[uid]

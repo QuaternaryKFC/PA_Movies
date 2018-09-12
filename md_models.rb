@@ -36,7 +36,7 @@ class User
           ct+=1
         end
       end
-      return 1-total/ct
+      return (ct==0)? 0:1-total/ct
     end
   end
 
