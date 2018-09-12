@@ -10,8 +10,12 @@ class Ratings
     #linear regression may lead to overflow prediction
     #para = regress ur, mv
     #return para[:alpha]+1*para[:beta]
+
+    #use 4 to test if logitreg give better prediction
+    #return 4
     ur = @md.urList[u_id]
     mv = @md.mvList[m_id]
+    #if the movie is not reviewed in base, give a migic 4
     if mv==nil
       return 4
     end

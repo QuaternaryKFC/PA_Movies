@@ -7,5 +7,5 @@ require "./mp_validate.rb"
 # mp = Ratings.new("./ml-100k/u.data")
 # puts (mp.predict uid, mid)
 
-vali = Validator.new("./ml-100k/u1.base", "./ml-100k/u1.test")
+vali = Validator.new("./ml-100k/u3.base", "./ml-100k/u3.test")
 vali.validate

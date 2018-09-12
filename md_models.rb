@@ -36,6 +36,7 @@ class User
           ct+=1
         end
       end
+      #if mo mutually reviewed movie the similarity goes 0
       return (ct==0)? 0:1-total/ct
     end
   end
