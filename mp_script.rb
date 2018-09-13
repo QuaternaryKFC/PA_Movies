@@ -1,16 +1,12 @@
-require "./mp_predict.rb"
 require "./mp_validate.rb"
-require "./mp_neuralnet.rb"
+# require "./mp_neuralnet.rb"
 
-# uid, mid = ARGV
-# uid=uid.to_i
-# mid=mid.to_i
-# mp = Ratings.new("./ml-100k/u.data")
-# puts (mp.predict uid, mid)
+(1..5).each do |i|
+  vali = Validator.new("./ml-100k/u#{i}.base", "./ml-100k/u#{i}.test")
+  vali.validate
+end
 
-vali = Validator.new("./ml-100k/u3.base", "./ml-100k/u3.test")
-vali.validate
-
+# Neral Network doesn't work
 # nnrun = NNRunner.new "./ml-100k/u.nnb"
 # nnrun.run
 # nnrun.valid "./ml-100k/u.nnt"

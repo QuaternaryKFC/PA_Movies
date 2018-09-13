@@ -19,12 +19,16 @@ class Ratings
     if mv==nil
       return 4
     end
+    #if only one user reviewed the movie
+    #predict based on the similarity rather than regression
     if mv.urList.length==1
       uid = mv.urList.keys()[0]
       u = @md.urList[uid]
       sim = ur.similar u
       logitr = sim/(1-sim)
     else
+      #logistic regression using similarity as x and rating as y
+      #the similarity to the user self is 1
       para = logitreg ur,mv
       logitr = para[:alpha]+1*para[:beta]
     end
