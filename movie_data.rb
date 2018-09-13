@@ -1,17 +1,19 @@
 require "./md_models.rb"
+require "./md_classifier.rb"
 
 #you can also use a method_missing method to deal with this kind of exception
 #main class for movie data processing
 class MovieData
   attr_reader :mvList, :urList, :rows
   def initialize(file)
-    @datafile = File.open(file)
+    datafile = File.open(file)
+    @classifier = Classifier.new "./ml-100k/u.item"
     #map ids to movies and users
     @mvList, @urList = Hash.new, Hash.new
     #keep same data in multiple forms may result in efficiency concern
     #learn to improve with set functions in the future
     @rows = []
-    @datafile.each do |l|
+    datafile.each do |l|
       row = MovieRecord.new(l)
       #add review info to each movie or user
       mvListInit(row)
@@ -72,8 +74,10 @@ class MovieData
   #add review info for every movie: sum of all rating, number of reviews
   def mvListInit(row)
     m_id = row.m_id
+    #try mvList[m_id]||=Movie.new(m_id) next time
     if !@mvList.key?(m_id)
       mv = Movie.new(m_id)
+      @classifier.classify mv
       @mvList[m_id] = mv
     end
     mv=@mvList[m_id]

@@ -1,5 +1,6 @@
 require "./mp_predict.rb"
 require "./mp_validate.rb"
+require "./mp_neuralnet.rb"
 
 # uid, mid = ARGV
 # uid=uid.to_i
@@ -9,3 +10,7 @@ require "./mp_validate.rb"
 
 vali = Validator.new("./ml-100k/u3.base", "./ml-100k/u3.test")
 vali.validate
+
+# nnrun = NNRunner.new "./ml-100k/u.nnb"
+# nnrun.run
+# nnrun.valid "./ml-100k/u.nnt"

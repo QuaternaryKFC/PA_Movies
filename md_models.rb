@@ -45,14 +45,24 @@ end
 
 class Movie
   attr_reader :m_id
-  attr_accessor :urList
+  attr_accessor :urList, :genre
   def initialize(m_id)
     #movie id; number of reviews; sum of ratings
     @m_id = m_id
     @urList = Hash.new
+    @genre = []
   end
 
   def aveRating
     return @urList.sum{|uid, r| r}/@urList.length
+  end
+end
+
+class MovieGenreRecord
+  attr_reader :m_id, :genre
+  def initialize record
+    @m_id = record[0].to_i
+    @m_name, @m_date, @imdb = record[0..3]
+    @genre = strsto_i(record[4...record.length])
   end
 end
