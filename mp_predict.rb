@@ -17,7 +17,7 @@ class Ratings
     mv = @md.mvList[m_id]
     #if the movie is not reviewed in base, give a migic 4
     if mv==nil
-      return 4
+      return 3.5
     end
     #if only one user reviewed the movie
     #predict based on the similarity rather than regression

@@ -14,7 +14,7 @@ class Validator
         uid = r.u_id
         mid = r.m_id
         rate = r.rate
-        @base.predict(uid, mid)-rate
+        (@base.predict(uid, mid)-rate).abs
       }
     end
     exact = @error.map{|e| true if e**2<1}.compact.length
